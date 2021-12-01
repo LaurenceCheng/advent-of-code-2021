@@ -5,6 +5,7 @@ const getMeasurementIncreaseTimes = (measurements) => {
     }, 0)  
 }
 
+// Part 2
 const getSumOfThreeMeasurementsIncreaseTimes = (sumOfMeasurements) => {
     return sumOfMeasurements.reduce((times, current, idx) => {
         if (sumOfMeasurements[idx + 3] > sumOfMeasurements[idx]) times++
