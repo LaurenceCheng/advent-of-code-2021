@@ -7,4 +7,4 @@ https://adventofcode.com/2021
  D1 | [solution](src/day1.js) |
  D2 | [solution](src/day2.js) |
  D3 | [solution](src/day3.js) |
- 
+ D4 | [solution](src/day4.js) |
