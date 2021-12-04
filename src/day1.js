@@ -1,3 +1,4 @@
+// in Windows, run 'type input.txt | node day1.js'
 const readline = require('readline')
 
 const readInput = async () => {
