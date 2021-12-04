@@ -3,6 +3,7 @@ const parseInstruction = (instruction) => {
   return { command, value: parseInt(valueStr) }
 }
 
+// Part 1
 const getNaivePosition = (instructions) => {
   return instructions.reduce(
     (position, instruction) => {
@@ -13,6 +14,9 @@ const getNaivePosition = (instructions) => {
       return position
     }, { x: 0, depth: 0 })
 }
+
+// const position = getNaivePosition(input)
+// console.log(position, position.x * position.depth)
 
 // Part 2
 const getCorrectPosition = (instructions) => {
@@ -28,3 +32,6 @@ const getCorrectPosition = (instructions) => {
       return position
     }, { x: 0, depth: 0, aim: 0 })
 }
+
+// const position2 = getCorrectPosition(input)
+// console.log(position2, position2.x * position2.depth)
