@@ -29,12 +29,9 @@ const readInput = async () => {
 
   const spawnDays = 256
   for (let d = 0; d < spawnDays; d++) {
-    let numberShouldBeSpawn = 0
-    for (let i = 0; i < lanternsBuckets.length; i++) {
-      if (i === 0) numberShouldBeSpawn = lanternsBuckets[i]
-      else {
-        lanternsBuckets[i - 1] = lanternsBuckets[i]
-      }
+    const numberShouldBeSpawn = lanternsBuckets[0]
+    for (let i = 1; i < lanternsBuckets.length; i++) {
+      lanternsBuckets[i - 1] = lanternsBuckets[i]
     }
     lanternsBuckets[spawnTimer] += numberShouldBeSpawn
     lanternsBuckets[spawnTimerForNewlyLantern] = numberShouldBeSpawn
