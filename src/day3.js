@@ -1,4 +1,4 @@
-// in Windows, run 'type input.txt | node day4.js'
+// in Windows, run 'type input.txt | node day3.js'
 const readline = require('readline')
 
 const readInput = async () => {
@@ -30,9 +30,8 @@ const getLeastCommonValue = (data, bitPosition) => {
 }
 
 const calculateGamma = (data, bitCount) => {
-  const gammaStr = Array(bitCount)
-    .fill('')
-    .map((_, i) => {
+  const gammaStr = [...Array(bitCount).keys()]
+    .map((i) => {
       return getMostCommonValue(data, i)
     })
     .join('')
