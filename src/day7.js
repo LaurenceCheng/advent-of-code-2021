@@ -33,13 +33,12 @@ const calculateTotalCostToPosition = (crabs, position, costFunc) => {
 const getMinimumCost = (crabs, costFunc) => {
   const maxCrabPosition = Math.max(...crabs)
 
-  let minimumCost = Number.MAX_SAFE_INTEGER
-  for (let i = 0; i <= maxCrabPosition; i++) {
-    const cost = calculateTotalCostToPosition(crabs, i, costFunc)
-    minimumCost = minimumCost < cost ? minimumCost : cost
-  }
-
-  return minimumCost
+  const costForAllPositions = Array(maxCrabPosition + 1)
+    .fill(0)
+    .map((_, idx) => {
+      return calculateTotalCostToPosition(crabs, idx, costFunc)
+    })
+  return Math.min(...costForAllPositions)
 }
 
 ;(async () => {
