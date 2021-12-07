@@ -12,57 +12,74 @@ const readInput = async () => {
   }
   return output.filter((s) => s)
 }
+
 const parseInstruction = (instruction) => {
   const [command, valueStr] = instruction.split(' ')
   return { command, value: parseInt(valueStr) }
 }
 
-// Part 1
-const getNaivePosition = (instructions) => {
-  return instructions.reduce(
-    (position, instruction) => {
-      const { command, value } = parseInstruction(instruction)
-      if (command === 'forward') {
-        position.x += value
-      }
-      if (command === 'down') {
-        position.depth += value
-      }
-      if (command === 'up') {
-        position.depth -= value
-      }
-      return position
-    },
-    { x: 0, depth: 0 }
-  )
+class NaiveSubmarine {
+  constructor() {
+    this.x = 0
+    this.depth = 0
+  }
+
+  forward(n) {
+    this.x += n
+  }
+
+  down(n) {
+    this.depth += n
+  }
+
+  up(n) {
+    this.depth -= n
+  }
+
+  getPosition() {
+    return { x: this.x, depth: this.depth }
+  }
 }
 
-// Part 2
-const getCorrectPosition = (instructions) => {
-  return instructions.reduce(
-    (position, instruction) => {
-      const { command, value } = parseInstruction(instruction)
-      if (command === 'forward') {
-        position.x += value
-        position.depth += position.aim * value
-      }
-      if (command === 'down') {
-        position.aim += value
-      }
-      if (command === 'up') {
-        position.aim -= value
-      }
-      return position
-    },
-    { x: 0, depth: 0, aim: 0 }
-  )
+class RealSubmarine extends NaiveSubmarine {
+  constructor() {
+    super()
+    this.aim = 0
+  }
+
+  forward(n) {
+    this.x += n
+    this.depth += this.aim * n
+  }
+
+  down(n) {
+    this.aim += n
+  }
+
+  up(n) {
+    this.aim -= n
+  }
+}
+const runInstructions = (submarine, instructions) => {
+  instructions.forEach((instruction) => {
+    const { command, value } = parseInstruction(instruction)
+    submarine[command](value)
+  })
+  return submarine.getPosition()
 }
 
 ;(async () => {
   const input = await readInput()
 
-  const position = getNaivePosition(input)
+  // Part 1
+  const naiveSubmarine = new NaiveSubmarine()
+  runInstructions(naiveSubmarine, input)
+  const position = naiveSubmarine.getPosition()
   console.log(position, position.x * position.depth)
-  const position2 = getCorrectPosition(input)
+
+  // Part 2
+  const realSubmarine = new RealSubmarine()
+  runInstructions(realSubmarine, input)
+  const position2 = realSubmarine.getPosition()
   console.log(position2, position2.x * position2.depth)
 })()
