@@ -24,20 +24,18 @@ const arithmeticSeriesCost = (steps) => {
 }
 
 const calculateTotalCostToPosition = (crabs, position, costFunc) => {
-  return crabs.reduce((sum, crab) => {
-    const steps = Math.abs(crab - position)
-    return sum + costFunc(steps)
-  }, 0)
+  return crabs
+    .map((crab) => Math.abs(crab - position))
+    .map((steps) => costFunc(steps))
+    .reduce((sum, cost) => sum + cost, 0)
 }
 
 const getMinimumCost = (crabs, costFunc) => {
   const maxCrabPosition = Math.max(...crabs)
 
-  const costForAllPositions = Array(maxCrabPosition + 1)
-    .fill(0)
-    .map((_, idx) => {
-      return calculateTotalCostToPosition(crabs, idx, costFunc)
-    })
+  const costForAllPositions = [...Array(maxCrabPosition + 1).keys()].map((position) => {
+    return calculateTotalCostToPosition(crabs, position, costFunc)
+  })
   return Math.min(...costForAllPositions)
 }
 
