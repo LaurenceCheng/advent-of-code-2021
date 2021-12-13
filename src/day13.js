@@ -1,4 +1,4 @@
-// in Windows, run 'type input.txt | node day10.js'
+// in Windows, run 'type input.txt | node day13.js'
 const readline = require('readline')
 const { deflateRaw } = require('zlib')
 
@@ -84,7 +84,7 @@ class TransparentPaper {
       )
       .map((ns) => Math.max(...ns) + 1)
 
-    const diagram = new Array(height).fill(0).map(() => new Array(width).fill('.'))
+    const diagram = Array.from(Array(height), () => new Array(width).fill('.'))
 
     this.dots.forEach(({ x, y }) => {
       diagram[y][x] = '#'
