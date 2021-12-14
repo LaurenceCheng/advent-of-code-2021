@@ -74,8 +74,7 @@ const convertToPairStatistics = (template) => {
 }
 
 const increaseCount = (map, key, count) => {
-  if (!map[key]) map[key] = count
-  else map[key] += count
+  map[key] = map[key] ? map[key] + count : count
 }
 
 const getMinMax = (statistics) => {
