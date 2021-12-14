@@ -18,3 +18,4 @@ https://adventofcode.com/2021
  D12 | [solution](src/day12.js) |
  D13 | [solution](src/day13.js) |
  D14 | [solution](src/day14.js) |
+ D15 | [solution](src/day15.js) |
