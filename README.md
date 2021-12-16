@@ -19,3 +19,5 @@ https://adventofcode.com/2021
  D13 | [solution](src/day13.js) |
  D14 | [solution](src/day14.js) |
  D15 | [solution](src/day15.js) |
+ D16 | [solution](src/day16.js) |
+ D17 | [solution](src/day17.js) |
