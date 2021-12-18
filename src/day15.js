@@ -83,5 +83,6 @@ const getLowestRisk = (from, to, risksTable, side) => {
   // Part 2
   side = tileSide * 5
   end = { x: side - 1, y: side - 1 }
+
   console.log(getLowestRisk(start, end, risksTile, side))
 })()
